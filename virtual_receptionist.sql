@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 06. 01:12
+-- Létrehozás ideje: 2018. Dec 06. 01:16
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -397,7 +397,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `GuestID` int(11) NOT NULL,
   `RoomID` int(11) NOT NULL,
-  `NumberOfGuest` int(10) NOT NULL,
+  `NumberOfGuests` int(10) NOT NULL,
   `ArrivalDate` date NOT NULL,
   `DepartureDate` date NOT NULL,
   PRIMARY KEY (`ID`),
@@ -409,7 +409,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
 -- A tábla adatainak kiíratása `reservation`
 --
 
-INSERT INTO `reservation` (`ID`, `GuestID`, `RoomID`, `NumberOfGuest`, `ArrivalDate`, `DepartureDate`) VALUES
+INSERT INTO `reservation` (`ID`, `GuestID`, `RoomID`, `NumberOfGuests`, `ArrivalDate`, `DepartureDate`) VALUES
 (1, 1, 8, 3, '2018-12-05', '2018-12-26');
 
 -- --------------------------------------------------------
