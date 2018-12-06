@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 07. 00:12
+-- Létrehozás ideje: 2018. Dec 07. 00:32
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `registrationisd` (`Registration`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `account`
@@ -52,7 +52,10 @@ INSERT INTO `account` (`ID`, `Registration`, `Username`, `Password`) VALUES
 (3, 2, 'dori', 'recis'),
 (4, 2, 'admin', 'sanyi'),
 (5, 3, 'adminantal', 'admin'),
-(6, 3, 'ilona', 'iluska');
+(6, 3, 'ilona', 'iluska'),
+(7, 4, 'turcsi', 'aranytomi'),
+(8, 4, 'mari', 'mariska1234'),
+(9, 1, 'bence', 'recis');
 
 -- --------------------------------------------------------
 
