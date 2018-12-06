@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `virtual_receptionist`
 --
+
+DROP DATABASE IF EXISTS `virtual_receptionist`;
 CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `virtual_receptionist`;
 
