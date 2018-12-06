@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 06. 02:15
+-- Létrehozás ideje: 2018. Dec 06. 02:30
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -345,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `Nationality` tinyint(1) NOT NULL,
-  `Country` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Country` int(11) NOT NULL,
   `ZipCode` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   `City` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `Address` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
@@ -354,16 +354,16 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `EmailAddress` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `PhoneNumber` (`PhoneNumber`),
-  UNIQUE KEY `EmailAddress` (`EmailAddress`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  UNIQUE KEY `EmailAddress` (`EmailAddress`),
+  KEY `countryid` (`Country`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `guest`
 --
 
 INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, `Address`, `VATNumber`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Juhász Bence', 0, 'Magyarország', '6900', 'Makó', 'Kálvária utca 48./A', '', '06202944280', 'juhasz.bence@outlook.hu'),
-(2, 'Donald Trump', 1, 'United States of America', 'NYC2001', 'New York', '5th Ave', '', '+555 12 34', 'dtrump@gov.usa');
+(1, 'Juhász Bence', 0, 100, '6900', 'Makó', 'Kálvária utca 48./A', '', '06 (20) / 294 42 80', 'juhasz.bence@outlook.hu');
 
 -- --------------------------------------------------------
 
@@ -481,6 +481,12 @@ INSERT INTO `room_category` (`ID`, `name`) VALUES
 --
 -- Megkötések a kiírt táblákhoz
 --
+
+--
+-- Megkötések a táblához `guest`
+--
+ALTER TABLE `guest`
+  ADD CONSTRAINT `countryid` FOREIGN KEY (`Country`) REFERENCES `country` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `reservation`
