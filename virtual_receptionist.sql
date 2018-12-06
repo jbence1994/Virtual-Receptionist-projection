@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 06. 18:18
+-- Létrehozás ideje: 2018. Dec 06. 22:09
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -21,9 +21,24 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `virtual_receptionist`
 --
-DROP DATABASE IF EXISTS `virtual_receptionist`;
 CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `virtual_receptionist`;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `accomodation`
+--
+
+DROP TABLE IF EXISTS `accomodation`;
+CREATE TABLE IF NOT EXISTS `accomodation` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `Lincese` int(11) NOT NULL,
+  `Account` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `licenseid` (`Lincese`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -34,8 +49,9 @@ USE `virtual_receptionist`;
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `AccomodationID` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
-  `Password` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `Username` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
+  `AccomodationID` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -378,15 +394,30 @@ CREATE TABLE IF NOT EXISTS `license` (
   `ProductKey` varchar(18) COLLATE utf8_hungarian_ci NOT NULL,
   `IsValid` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `license`
 --
 
 INSERT INTO `license` (`ID`, `ProductKey`, `IsValid`) VALUES
-(1, '2019-AWRF4D-222FGJ', 0),
-(2, '2019-K9PD33-E2E57A', 0);
+(1, '2019-AWRF4D-222FGJ', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `registration`
+--
+
+DROP TABLE IF EXISTS `registration`;
+CREATE TABLE IF NOT EXISTS `registration` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationID` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `Accomodation` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `accomodationid` (`Accomodation`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -484,10 +515,22 @@ INSERT INTO `room_category` (`ID`, `Name`) VALUES
 --
 
 --
+-- Megkötések a táblához `accomodation`
+--
+ALTER TABLE `accomodation`
+  ADD CONSTRAINT `licenseid` FOREIGN KEY (`Lincese`) REFERENCES `license` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Megkötések a táblához `guest`
 --
 ALTER TABLE `guest`
   ADD CONSTRAINT `countryid` FOREIGN KEY (`Country`) REFERENCES `country` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Megkötések a táblához `registration`
+--
+ALTER TABLE `registration`
+  ADD CONSTRAINT `accomodationid` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `reservation`
