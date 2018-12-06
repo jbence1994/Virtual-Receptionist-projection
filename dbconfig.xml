@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MySQLConfiguration>
+  <connection type="local">
+    <server>127.0.0.1</server>
+    <database>virtual_receptionist</database>
+    <username>root</username>
+    <password></password>
+    <port>3306</port>
+    <sslMode>SslMode=None</sslMode>
+  </connection>
+  <connection type="remote">
+    <server></server>
+    <database>virtual_receptionist</database>
+    <username></username>
+    <password></password>
+    <port>3306</port>
+    <sslMode>SslMode=None</sslMode>
+  </connection>
+</MySQLConfiguration>
