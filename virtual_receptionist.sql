@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 06. 16:31
+-- Létrehozás ideje: 2018. Dec 06. 18:18
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `virtual_receptionist`
 --
-
 DROP DATABASE IF EXISTS `virtual_receptionist`;
 CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `virtual_receptionist`;
@@ -35,7 +34,7 @@ USE `virtual_receptionist`;
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Username` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `AccomodationID` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   `Password` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
@@ -501,7 +500,7 @@ ALTER TABLE `reservation`
 -- Megkötések a táblához `room`
 --
 ALTER TABLE `room`
-  ADD CONSTRAINT `categoryid` FOREIGN KEY (`category`) REFERENCES `room_category` (`ID`);
+  ADD CONSTRAINT `categoryid` FOREIGN KEY (`Category`) REFERENCES `room_category` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
