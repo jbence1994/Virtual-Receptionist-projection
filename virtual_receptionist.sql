@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 08. 10:56
--- Kiszolgáló verziója: 10.1.30-MariaDB
--- PHP verzió: 7.2.1
+-- Létrehozás ideje: 2018. Dec 11. 00:18
+-- Kiszolgáló verziója: 10.1.32-MariaDB
+-- PHP verzió: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -70,17 +70,19 @@ CREATE TABLE IF NOT EXISTS `billing_items` (
   `Price` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   `Unit` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `billing_items`
 --
 
 INSERT INTO `billing_items` (`ID`, `Item`, `Price`, `Unit`) VALUES
-(1, 'Idegenforgalmi adó', '300', 'éjszaka'),
-(2, '1 szoba 1 főre', '8700', 'éjszaka'),
-(3, '1 szoba 2 főre', '11400', 'éjszaka'),
-(4, 'Idegenforgalmi adó mentes', '0', 'éjszaka');
+(1, 'Szoba 1 főre', '8700', 'éjszaka'),
+(2, 'Szoba 2 főre', '11400', 'éjszaka'),
+(3, 'Szoba 3 főre', '14100', 'éjszaka'),
+(4, 'Apartman', '16800', 'éjszaka'),
+(5, 'Idegenforgalmi adó', '300', 'darab'),
+(6, 'Idegenforgalmi adó mentes', '0', 'darab');
 
 -- --------------------------------------------------------
 
