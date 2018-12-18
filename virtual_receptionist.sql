@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 11. 00:18
--- Kiszolgáló verziója: 10.1.32-MariaDB
--- PHP verzió: 7.2.5
+-- Létrehozás ideje: 2018. Dec 18. 21:36
+-- Kiszolgáló verziója: 10.1.34-MariaDB
+-- PHP verzió: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -392,8 +392,8 @@ INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, 
 -- Tábla szerkezet ehhez a táblához `registration`
 --
 
-DROP TABLE IF EXISTS `registration`;
-CREATE TABLE IF NOT EXISTS `registration` (
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE IF NOT EXISTS `profile` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `AccomodationName` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `AccomodationID` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
@@ -403,10 +403,10 @@ CREATE TABLE IF NOT EXISTS `registration` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `registration`
+-- A tábla adatainak kiíratása `profile`
 --
 
-INSERT INTO `registration` (`ID`, `AccomodationName`, `AccomodationID`, `Password`) VALUES
+INSERT INTO `profile` (`ID`, `AccomodationName`, `AccomodationID`, `Password`) VALUES
 (1, 'Autós Panzió', 'AUTSPNZ', 'autosp'),
 (2, 'Bástya Hotel', 'BSTYHTL', 'psanyi'),
 (3, 'Fenyő Panzió', 'FNYPNZ', 'fenyoantal'),
@@ -511,7 +511,7 @@ INSERT INTO `room_category` (`ID`, `Name`) VALUES
 -- Megkötések a táblához `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `registrationisd` FOREIGN KEY (`Registration`) REFERENCES `registration` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `registrationisd` FOREIGN KEY (`Registration`) REFERENCES `profile` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `guest`
