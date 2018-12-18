@@ -389,7 +389,7 @@ INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `registration`
+-- Tábla szerkezet ehhez a táblához `profile`
 --
 
 DROP TABLE IF EXISTS `profile`;
