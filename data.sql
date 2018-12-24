@@ -3,16 +3,8 @@
 --
 
 INSERT INTO `accomodation` (`ID`, `AccomodationName`, `CompanyName`, `Contact`, `VATNumber`, `Headquarters`, `Site`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Autós Panzió', 'Autóscsárda-Panzió Vendéglátó és Kereskedelmi Korlátolt Felelősségű Társaság', 'Szabó Norbert', '13542199206', '6900 Makó, Deák Ferenc u. 28/B', '6900 Makó, Báló liget', '06 (62) 510 298', 'info@autospanzio.hu');
-
--- --------------------------------------------------------
-
---
--- A tábla adatainak kiíratása `account`
---
-
-INSERT INTO `account` (`ID`, `AccomodationID`, `Username`, `Password`) VALUES
-(1, 1, 'norci', 'szabocsalad');
+(1, 'Autós Panzió', 'Autóscsárda-Panzió Vendéglátó és Kereskedelmi Kft.', 'Szabó Norbert', '13542199206', '6900 Makó, Deák Ferenc u. 28/B', '6900 Makó, Báló liget', '06 (62) 510 298', 'info@autospanzio.hu'),
+(2, 'Bástya Hotel***', 'N.A.', 'Puszta Sándor', 'N.A.', 'N.A.', '6990 Makó, Szegedi u. 2', '06 (62) 214 224', 'foglalas@bastyahotelmako.hu');
 
 -- --------------------------------------------------------
 
@@ -301,8 +293,9 @@ INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, 
 -- A tábla adatainak kiíratása `profile`
 --
 
-INSERT INTO `profile` (`ID`, `Accomodation`, `AccomodationID`, `Password`) VALUES
-(1, 1, 'AUTPNZ', 'autos123');
+INSERT INTO `profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
+(1, 'AUTSPNZ', 'norci71'),
+(2, 'BSTYHTL', 'puszta');
 
 -- --------------------------------------------------------
 
