@@ -1,12 +1,100 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2018. Dec 24. 19:13
+-- Kiszolgáló verziója: 10.1.32-MariaDB
+-- PHP verzió: 7.2.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Adatbázis: `virtual_receptionist`
+--
+CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `virtual_receptionist`;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `accomodation`
+--
+
+DROP TABLE IF EXISTS `accomodation`;
+CREATE TABLE IF NOT EXISTS `accomodation` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationName` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `CompanyName` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `Contact` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `VATNumber` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `Headquarters` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `Site` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `PhoneNumber` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `AccomodationName` (`AccomodationName`,`CompanyName`,`VATNumber`,`PhoneNumber`,`EmailAddress`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
 --
 -- A tábla adatainak kiíratása `accomodation`
 --
 
 INSERT INTO `accomodation` (`ID`, `AccomodationName`, `CompanyName`, `Contact`, `VATNumber`, `Headquarters`, `Site`, `PhoneNumber`, `EmailAddress`) VALUES
 (1, 'Autós Panzió', 'Autóscsárda-Panzió Vendéglátó és Kereskedelmi Kft.', 'Szabó Norbert', '13542199206', '6900 Makó, Deák Ferenc u. 28/B', '6900 Makó, Báló liget', '06 (62) 510 298', 'info@autospanzio.hu'),
-(2, 'Bástya Hotel***', 'N.A.', 'Puszta Sándor', 'N.A.', 'N.A.', '6990 Makó, Szegedi u. 2', '06 (62) 214 224', 'foglalas@bastyahotelmako.hu');
+(2, 'Bástya Hotel***', 'N.A.', 'Puszta Sándor', 'N.A.', 'N.A.', '6990 Makó, Szegedi u. 2', '06 (62) 214 224', 'foglalas@bastyahotelmako.hu'),
+(3, 'Main Square', 'Neparáczki Kft.', 'Neparáczki Nándor', '2334352', '6900 Makó, Ibolya u. 45', '6900 Makó, Széchenyi tér 32', '06 (62) 345 445', 'info@neparaczki.hu'),
+(4, 'Velnök Apartman', 'Neparáczki Kft.', 'Neparáczki Nándor', '3547352', '6900 Makó, Ibolya u. 45', '6900 Makó, Makovecz u. 34', '06 (62) 575 234', 'info@neparaczki.hu');
 
 -- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+CREATE TABLE IF NOT EXISTS `account` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationID` int(11) NOT NULL,
+  `Username` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `registrationisd` (`AccomodationID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `account`
+--
+
+INSERT INTO `account` (`ID`, `AccomodationID`, `Username`, `Password`) VALUES
+(1, 1, 'zita', 'rece'),
+(2, 1, 'norci', 'rece'),
+(3, 1, 'bence', 'rece'),
+(4, 2, 'sanyi', 'bastille');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `billing_items`
+--
+
+DROP TABLE IF EXISTS `billing_items`;
+CREATE TABLE IF NOT EXISTS `billing_items` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Item` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Price` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `Unit` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `billing_items`
@@ -21,6 +109,19 @@ INSERT INTO `billing_items` (`ID`, `Item`, `Price`, `Unit`) VALUES
 (6, 'Idegenforgalmi adó mentes', '0', 'darab');
 
 -- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `country`
+--
+
+DROP TABLE IF EXISTS `country`;
+CREATE TABLE IF NOT EXISTS `country` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Code` varchar(2) COLLATE utf8_hungarian_ci NOT NULL,
+  `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `Code` (`Name`)
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `country`
@@ -281,6 +382,28 @@ INSERT INTO `country` (`ID`, `Code`, `Name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `guest`
+--
+
+DROP TABLE IF EXISTS `guest`;
+CREATE TABLE IF NOT EXISTS `guest` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `Nationality` tinyint(1) NOT NULL,
+  `Country` int(11) NOT NULL,
+  `ZipCode` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `City` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Address` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `VATNumber` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
+  `PhoneNumber` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `PhoneNumber` (`PhoneNumber`),
+  UNIQUE KEY `EmailAddress` (`EmailAddress`),
+  KEY `countryid` (`Country`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
 -- A tábla adatainak kiíratása `guest`
 --
 
@@ -290,57 +413,112 @@ INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, 
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `profile`
+--
+
+DROP TABLE IF EXISTS `profile`;
+CREATE TABLE IF NOT EXISTS `profile` (
+  `Accomodation` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`Accomodation`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
 -- A tábla adatainak kiíratása `profile`
 --
 
 INSERT INTO `profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
 (1, 'AUTSPNZ', 'norci71'),
-(2, 'BSTYHTL', 'puszta');
+(2, 'BSTYHTL', 'puszta'),
+(3, 'MNSQR', 'nandinep'),
+(4, 'VLNKAP', 'nancso2');
 
 -- --------------------------------------------------------
 
 --
--- A tábla adatainak kiíratása `reservation`
+-- Tábla szerkezet ehhez a táblához `reservation`
 --
 
-INSERT INTO `reservation` (`ID`, `GuestID`, `RoomID`, `NumberOfGuests`, `ArrivalDate`, `DepartureDate`) VALUES
-(1, 1, 8, 3, '2018-12-05', '2018-12-26');
+DROP TABLE IF EXISTS `reservation`;
+CREATE TABLE IF NOT EXISTS `reservation` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `GuestID` int(11) NOT NULL,
+  `RoomID` int(11) NOT NULL,
+  `NumberOfGuests` int(10) NOT NULL,
+  `ArrivalDate` date NOT NULL,
+  `DepartureDate` date NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `roomid` (`RoomID`),
+  KEY `guestid` (`GuestID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
 --
--- A tábla adatainak kiíratása `room`
+-- Tábla szerkezet ehhez a táblához `room`
 --
 
-INSERT INTO `room` (`ID`, `Name`, `Number`, `Category`, `Capacity`) VALUES
-(1, 'Háromágyas', 1, 1, 3),
-(2, 'Háromágyas', 2, 1, 3),
-(3, 'Családi', 3, 2, 4),
-(4, 'Családi', 4, 2, 4),
-(5, 'Franciágyas', 6, 3, 2),
-(6, 'Franciágyas', 7, 3, 2),
-(7, 'Franciaágyas', 8, 3, 2),
-(8, 'Háromágyas', 9, 1, 3),
-(9, 'Háromágyas', 10, 1, 3),
-(10, 'Háromágyas', 11, 1, 3),
-(11, 'Háromágyas', 12, 1, 3),
-(12, 'Franciaágyas', 14, 4, 2),
-(13, 'Különágyas', 15, 5, 2),
-(14, 'Apartman', 16, 6, 4),
-(15, 'Apartman', 17, 6, 4),
-(16, 'Különágyas', 18, 5, 2),
-(17, 'Franciaágyas', 19, 4, 2);
+DROP TABLE IF EXISTS `room`;
+CREATE TABLE IF NOT EXISTS `room` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Number` int(3) NOT NULL,
+  `Category` int(11) NOT NULL,
+  `Capacity` int(100) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `categoryid` (`Category`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
 --
--- A tábla adatainak kiíratása `room_category`
+-- Tábla szerkezet ehhez a táblához `room_category`
 --
 
-INSERT INTO `room_category` (`ID`, `Name`) VALUES
-(1, 'Földszinti háromágyas'),
-(2, 'Földszinti négyágyas'),
-(3, 'Földszinti franciaágyas'),
-(4, 'Emeleti erkélyes franciaágyas'),
-(5, 'Emeleti két különágyas'),
-(6, 'Emeleti négyágyas apartman');
+DROP TABLE IF EXISTS `room_category`;
+CREATE TABLE IF NOT EXISTS `room_category` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- Megkötések a kiírt táblákhoz
+--
+
+--
+-- Megkötések a táblához `account`
+--
+ALTER TABLE `account`
+  ADD CONSTRAINT `accomodationid` FOREIGN KEY (`AccomodationID`) REFERENCES `profile` (`Accomodation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Megkötések a táblához `guest`
+--
+ALTER TABLE `guest`
+  ADD CONSTRAINT `countryid` FOREIGN KEY (`Country`) REFERENCES `country` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Megkötések a táblához `profile`
+--
+ALTER TABLE `profile`
+  ADD CONSTRAINT `accomodationID(1:1)` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`);
+
+--
+-- Megkötések a táblához `reservation`
+--
+ALTER TABLE `reservation`
+  ADD CONSTRAINT `guestid` FOREIGN KEY (`GuestID`) REFERENCES `guest` (`ID`) ON DELETE NO ACTION,
+  ADD CONSTRAINT `roomid` FOREIGN KEY (`RoomID`) REFERENCES `room` (`ID`) ON DELETE NO ACTION;
+
+--
+-- Megkötések a táblához `room`
+--
+ALTER TABLE `room`
+  ADD CONSTRAINT `categoryid` FOREIGN KEY (`Category`) REFERENCES `room_category` (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
