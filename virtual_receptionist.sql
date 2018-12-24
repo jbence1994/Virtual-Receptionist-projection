@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 24. 19:13
+-- Létrehozás ideje: 2018. Dec 24. 19:42
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `virtual_receptionist`
 --
+
+DROP DATABASE IF EXISTS `virtual_receptionist`;
 CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `virtual_receptionist`;
 
@@ -43,17 +45,14 @@ CREATE TABLE IF NOT EXISTS `accomodation` (
   `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `AccomodationName` (`AccomodationName`,`CompanyName`,`VATNumber`,`PhoneNumber`,`EmailAddress`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `accomodation`
 --
 
 INSERT INTO `accomodation` (`ID`, `AccomodationName`, `CompanyName`, `Contact`, `VATNumber`, `Headquarters`, `Site`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Autós Panzió', 'Autóscsárda-Panzió Vendéglátó és Kereskedelmi Kft.', 'Szabó Norbert', '13542199206', '6900 Makó, Deák Ferenc u. 28/B', '6900 Makó, Báló liget', '06 (62) 510 298', 'info@autospanzio.hu'),
-(2, 'Bástya Hotel***', 'N.A.', 'Puszta Sándor', 'N.A.', 'N.A.', '6990 Makó, Szegedi u. 2', '06 (62) 214 224', 'foglalas@bastyahotelmako.hu'),
-(3, 'Main Square', 'Neparáczki Kft.', 'Neparáczki Nándor', '2334352', '6900 Makó, Ibolya u. 45', '6900 Makó, Széchenyi tér 32', '06 (62) 345 445', 'info@neparaczki.hu'),
-(4, 'Velnök Apartman', 'Neparáczki Kft.', 'Neparáczki Nándor', '3547352', '6900 Makó, Ibolya u. 45', '6900 Makó, Makovecz u. 34', '06 (62) 575 234', 'info@neparaczki.hu');
+(1, 'Autós Panzió', 'Autóscsárda-Panzió Vendéglátó és Kereskedelmi Kft.', 'Szabó Norbert', '13542199206', '6900 Makó, Deák Ferenc u. 28/B', '6900 Makó, Báló liget', '06 (62) 510 298', 'info@autospanzio.hu');
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `registrationisd` (`AccomodationID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `account`
@@ -78,8 +77,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 INSERT INTO `account` (`ID`, `AccomodationID`, `Username`, `Password`) VALUES
 (1, 1, 'zita', 'rece'),
 (2, 1, 'norci', 'rece'),
-(3, 1, 'bence', 'rece'),
-(4, 2, 'sanyi', 'bastille');
+(3, 1, 'bence', 'rece');
 
 -- --------------------------------------------------------
 
@@ -401,14 +399,7 @@ CREATE TABLE IF NOT EXISTS `guest` (
   UNIQUE KEY `PhoneNumber` (`PhoneNumber`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`),
   KEY `countryid` (`Country`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `guest`
---
-
-INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, `Address`, `VATNumber`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Juhász Bence', 0, 100, '6900', 'Makó', 'Kálvária utca 48./A', '', '06 (20) / 294 42 80', 'juhasz.bence@outlook.hu');
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -422,17 +413,14 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
   `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`Accomodation`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `profile`
 --
 
 INSERT INTO `profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
-(1, 'AUTSPNZ', 'norci71'),
-(2, 'BSTYHTL', 'puszta'),
-(3, 'MNSQR', 'nandinep'),
-(4, 'VLNKAP', 'nancso2');
+(1, 'AUTSPNZ', 'norci71');
 
 -- --------------------------------------------------------
 
@@ -451,7 +439,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`ID`),
   KEY `roomid` (`RoomID`),
   KEY `guestid` (`GuestID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -468,7 +456,15 @@ CREATE TABLE IF NOT EXISTS `room` (
   `Capacity` int(100) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `categoryid` (`Category`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `room`
+--
+
+INSERT INTO `room` (`ID`, `Name`, `Number`, `Category`, `Capacity`) VALUES
+(15, 'Apartman #1', 16, 12, 4),
+(16, 'Apartman #2', 17, 12, 4);
 
 -- --------------------------------------------------------
 
@@ -482,6 +478,18 @@ CREATE TABLE IF NOT EXISTS `room_category` (
   `Name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `room_category`
+--
+
+INSERT INTO `room_category` (`ID`, `Name`) VALUES
+(1, 'Földszinti háromágyas'),
+(2, 'Földszinti családi négyágyas'),
+(3, 'Földszinti franciaágyas'),
+(4, 'Emeleti franciaágyas'),
+(5, 'Emeleti külön ágyas'),
+(6, 'Apartman');
 
 --
 -- Megkötések a kiírt táblákhoz
