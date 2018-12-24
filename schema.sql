@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 18. 21:36
--- Kiszolgáló verziója: 10.1.34-MariaDB
--- PHP verzió: 7.2.7
+-- Létrehozás ideje: 2018. Dec 24. 03:24
+-- Kiszolgáló verziója: 10.1.32-MariaDB
+-- PHP verzió: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,18 +29,37 @@ USE `virtual_receptionist`;
 -- --------------------------------------------------------
 
 --
+-- Tábla szerkezet ehhez a táblához `accomodation`
+--
+
+DROP TABLE IF EXISTS `accomodation`;
+CREATE TABLE IF NOT EXISTS `accomodation` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationName` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `CompanyName` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `Contact` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `VATNumber` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `Headquarters` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `Site` varchar(150) COLLATE utf8_hungarian_ci NOT NULL,
+  `PhoneNumber` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+-- --------------------------------------------------------
+--
 -- Tábla szerkezet ehhez a táblához `account`
 --
 
 DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Registration` int(11) NOT NULL,
+  `AccomodationID` int(11) NOT NULL,
   `Username` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
   `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `registrationisd` (`Registration`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  KEY `registrationisd` (`AccomodationID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -88,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `City` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `Address` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `VATNumber` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
-  `PhoneNumber` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
-  `EmailAddress` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
+  `PhoneNumber` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `PhoneNumber` (`PhoneNumber`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`),
@@ -105,12 +124,12 @@ CREATE TABLE IF NOT EXISTS `guest` (
 DROP TABLE IF EXISTS `profile`;
 CREATE TABLE IF NOT EXISTS `profile` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `AccomodationName` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `AccomodationID` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
-  `Password` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
+  `Accomodation` int(11) NOT NULL,
+  `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `accomodationid` (`AccomodationName`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  KEY `accomodationName` (`Accomodation`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -171,13 +190,19 @@ CREATE TABLE IF NOT EXISTS `room_category` (
 -- Megkötések a táblához `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `registrationisd` FOREIGN KEY (`Registration`) REFERENCES `profile` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `registrationisd` FOREIGN KEY (`AccomodationID`) REFERENCES `profile` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `guest`
 --
 ALTER TABLE `guest`
   ADD CONSTRAINT `countryid` FOREIGN KEY (`Country`) REFERENCES `country` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Megkötések a táblához `profile`
+--
+ALTER TABLE `profile`
+  ADD CONSTRAINT `accomodationName` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `reservation`
