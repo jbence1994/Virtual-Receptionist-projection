@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 25. 14:55
+-- Létrehozás ideje: 2018. Dec 25. 18:55
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -57,27 +57,23 @@ INSERT INTO `accomodation` (`ID`, `AccomodationName`, `CompanyName`, `Contact`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `account`
+-- Tábla szerkezet ehhez a táblához `accomodation_profile`
 --
 
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE IF NOT EXISTS `account` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `AccomodationID` int(11) NOT NULL,
-  `Username` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
-  `Password` varchar(15) COLLATE utf8_hungarian_ci NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `registrationisd` (`AccomodationID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+DROP TABLE IF EXISTS `accomodation_profile`;
+CREATE TABLE IF NOT EXISTS `accomodation_profile` (
+  `Accomodation` int(11) NOT NULL AUTO_INCREMENT,
+  `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
+  `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`Accomodation`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `account`
+-- A tábla adatainak kiíratása `accomodation_profile`
 --
 
-INSERT INTO `account` (`ID`, `AccomodationID`, `Username`, `Password`) VALUES
-(1, 1, 'zita', 'rece'),
-(2, 1, 'norci', 'rece'),
-(3, 1, 'bence', 'rece');
+INSERT INTO `accomodation_profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
+(1, 'AUTSPNZ', 'norci71');
 
 -- --------------------------------------------------------
 
@@ -399,35 +395,15 @@ CREATE TABLE IF NOT EXISTS `guest` (
   UNIQUE KEY `PhoneNumber` (`PhoneNumber`),
   UNIQUE KEY `EmailAddress` (`EmailAddress`),
   KEY `countryid` (`Country`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `guest`
 --
 
 INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, `Address`, `VATNumber`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Dr. Friedrich Otto Beckewitz', 1, 57, '', 'München', 'Muttenthalerstraße 12.', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `profile`
---
-
-DROP TABLE IF EXISTS `profile`;
-CREATE TABLE IF NOT EXISTS `profile` (
-  `Accomodation` int(11) NOT NULL AUTO_INCREMENT,
-  `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
-  `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
-  PRIMARY KEY (`Accomodation`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `profile`
---
-
-INSERT INTO `profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
-(1, 'AUTSPNZ', 'norci71');
+(1, 'Dr. Friedrich Otto Beckewitz', 1, 57, '', 'München', 'Muttenthalerstraße 12.', '', '', ''),
+(2, 'Binary Software Kft.', 0, 100, '6900', 'Makó', 'Kálvária u. 48/A', '13406413244', '06 (20) 294 42 80', 'juhasz.bence@outlook.hu');
 
 -- --------------------------------------------------------
 
@@ -446,14 +422,15 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   PRIMARY KEY (`ID`),
   KEY `roomid` (`RoomID`),
   KEY `guestid` (`GuestID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `reservation`
 --
 
 INSERT INTO `reservation` (`ID`, `GuestID`, `RoomID`, `NumberOfGuests`, `ArrivalDate`, `DepartureDate`) VALUES
-(1, 1, 5, 2, '2019-01-03', '2019-01-04');
+(1, 1, 5, 2, '2019-01-03', '2019-01-04'),
+(2, 2, 15, 4, '2018-12-25', '2018-12-26');
 
 -- --------------------------------------------------------
 
@@ -525,22 +502,16 @@ INSERT INTO `room_category` (`ID`, `Name`) VALUES
 --
 
 --
--- Megkötések a táblához `account`
+-- Megkötések a táblához `accomodation_profile`
 --
-ALTER TABLE `account`
-  ADD CONSTRAINT `accomodationid` FOREIGN KEY (`AccomodationID`) REFERENCES `profile` (`Accomodation`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `accomodation_profile`
+  ADD CONSTRAINT `accomodationID(1:1)` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`);
 
 --
 -- Megkötések a táblához `guest`
 --
 ALTER TABLE `guest`
   ADD CONSTRAINT `countryid` FOREIGN KEY (`Country`) REFERENCES `country` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Megkötések a táblához `profile`
---
-ALTER TABLE `profile`
-  ADD CONSTRAINT `accomodationID(1:1)` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`);
 
 --
 -- Megkötések a táblához `reservation`
