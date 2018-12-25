@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 24. 20:05
+-- Létrehozás ideje: 2018. Dec 25. 14:55
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `virtual_receptionist`
 --
+
+DROP DATABASE IF EXISTS `virtual_receptionist`;
 CREATE DATABASE IF NOT EXISTS `virtual_receptionist` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
 USE `virtual_receptionist`;
 
@@ -387,9 +389,9 @@ CREATE TABLE IF NOT EXISTS `guest` (
   `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `Nationality` tinyint(1) NOT NULL,
   `Country` int(11) NOT NULL,
-  `ZipCode` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
-  `City` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
-  `Address` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `ZipCode` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
+  `City` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `Address` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `VATNumber` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
   `PhoneNumber` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `EmailAddress` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
