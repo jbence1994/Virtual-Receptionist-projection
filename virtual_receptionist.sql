@@ -100,10 +100,10 @@ INSERT INTO `billing_item` (`ID`, `Item`, `Category`, `Price`) VALUES
 (2, '1 szoba 2 főre', 1, '11400'),
 (3, '1 szoba 3 főre', 1, '14100'),
 (4, 'Apartman', 1, '16800'),
-(5, 'Idegenforgalmi adó', 4, '300'),
-(6, 'Idegenforgalmi adó mentes', 4, '0'),
-(7, 'Reggeli', 3, '1500'),
-(8, 'Mosás', 2, '1000');
+(5, 'Idegenforgalmi adó', 3, '300'),
+(6, 'Idegenforgalmi adó mentes', 3, '0'),
+(7, 'Reggeli', 2, '1500'),
+(8, 'Mosás', 4, '1000');
 
 -- --------------------------------------------------------
 
@@ -126,9 +126,9 @@ CREATE TABLE IF NOT EXISTS `billing_item_category` (
 
 INSERT INTO `billing_item_category` (`ID`, `Name`, `VAT`, `Unit`) VALUES
 (1, 'Szállás', 18, 'éjszaka'),
-(2, 'Egyéb', 27, 'alkalom'),
-(3, 'Fogyasztás (étel, ital)', 18, 'alkalom'),
-(4, 'Tárgyi adó mentes', 0, 'darab');
+(2, 'Fogyasztás (étel, ital)', 18, 'alkalom'),
+(3, 'Tárgyi adó mentes', 0, 'darab'),
+(4, 'Egyéb szolgáltatás', 27, 'alkalom');
 
 -- --------------------------------------------------------
 
