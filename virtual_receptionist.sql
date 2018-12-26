@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 25. 18:55
+-- Létrehozás ideje: 2018. Dec 26. 22:53
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -57,11 +57,11 @@ INSERT INTO `accomodation` (`ID`, `AccomodationName`, `CompanyName`, `Contact`, 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `accomodation_profile`
+-- Tábla szerkezet ehhez a táblához `accomodation_registration`
 --
 
-DROP TABLE IF EXISTS `accomodation_profile`;
-CREATE TABLE IF NOT EXISTS `accomodation_profile` (
+DROP TABLE IF EXISTS `accomodation_registration`;
+CREATE TABLE IF NOT EXISTS `accomodation_registration` (
   `Accomodation` int(11) NOT NULL AUTO_INCREMENT,
   `AccomodationID` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
   `Password` varchar(8) COLLATE utf8_hungarian_ci NOT NULL,
@@ -69,38 +69,51 @@ CREATE TABLE IF NOT EXISTS `accomodation_profile` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
--- A tábla adatainak kiíratása `accomodation_profile`
+-- A tábla adatainak kiíratása `accomodation_registration`
 --
 
-INSERT INTO `accomodation_profile` (`Accomodation`, `AccomodationID`, `Password`) VALUES
+INSERT INTO `accomodation_registration` (`Accomodation`, `AccomodationID`, `Password`) VALUES
 (1, 'AUTSPNZ', 'norci71');
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `billing_items`
+-- Tábla szerkezet ehhez a táblához `billing_item`
 --
 
-DROP TABLE IF EXISTS `billing_items`;
-CREATE TABLE IF NOT EXISTS `billing_items` (
+DROP TABLE IF EXISTS `billing_item`;
+CREATE TABLE IF NOT EXISTS `billing_item` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Item` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `Item` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `Category` int(11) NOT NULL,
   `Price` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
-  `Unit` varchar(20) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+-- --------------------------------------------------------
 
 --
--- A tábla adatainak kiíratása `billing_items`
+-- Tábla szerkezet ehhez a táblához `billing_item_category`
 --
 
-INSERT INTO `billing_items` (`ID`, `Item`, `Price`, `Unit`) VALUES
-(1, 'Szoba 1 főre', '8700', 'éjszaka'),
-(2, 'Szoba 2 főre', '11400', 'éjszaka'),
-(3, 'Szoba 3 főre', '14100', 'éjszaka'),
-(4, 'Apartman', '16800', 'éjszaka'),
-(5, 'Idegenforgalmi adó', '300', 'darab'),
-(6, 'Idegenforgalmi adó mentes', '0', 'darab');
+DROP TABLE IF EXISTS `billing_item_category`;
+CREATE TABLE IF NOT EXISTS `billing_item_category` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
+  `VAT` float NOT NULL,
+  `Unit` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `billing_item_category`
+--
+
+INSERT INTO `billing_item_category` (`ID`, `Name`, `VAT`, `Unit`) VALUES
+(1, 'Szállás', 18, 'éjszaka'),
+(2, 'Egyéb', 27, 'alkalom'),
+(3, 'Étkezés közvetített szolg', 18, 'alkalom'),
+(4, 'Tárgyi adó mentes', 0, 'darab');
 
 -- --------------------------------------------------------
 
@@ -502,10 +515,10 @@ INSERT INTO `room_category` (`ID`, `Name`) VALUES
 --
 
 --
--- Megkötések a táblához `accomodation_profile`
+-- Megkötések a táblához `accomodation_registration`
 --
-ALTER TABLE `accomodation_profile`
-  ADD CONSTRAINT `accomodationID(1:1)` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`);
+ALTER TABLE `accomodation_registration`
+  ADD CONSTRAINT `accomodationIDOneToOne` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `guest`
@@ -517,14 +530,14 @@ ALTER TABLE `guest`
 -- Megkötések a táblához `reservation`
 --
 ALTER TABLE `reservation`
-  ADD CONSTRAINT `guestid` FOREIGN KEY (`GuestID`) REFERENCES `guest` (`ID`) ON DELETE NO ACTION,
-  ADD CONSTRAINT `roomid` FOREIGN KEY (`RoomID`) REFERENCES `room` (`ID`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `guestid` FOREIGN KEY (`GuestID`) REFERENCES `guest` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `roomid` FOREIGN KEY (`RoomID`) REFERENCES `room` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `room`
 --
 ALTER TABLE `room`
-  ADD CONSTRAINT `categoryid` FOREIGN KEY (`Category`) REFERENCES `room_category` (`ID`);
+  ADD CONSTRAINT `categoryid` FOREIGN KEY (`Category`) REFERENCES `room_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
