@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 26. 22:53
+-- Létrehozás ideje: 2018. Dec 26. 23:29
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -87,8 +87,23 @@ CREATE TABLE IF NOT EXISTS `billing_item` (
   `Item` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `Category` int(11) NOT NULL,
   `Price` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  PRIMARY KEY (`ID`),
+  KEY `category` (`Category`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+
+--
+-- A tábla adatainak kiíratása `billing_item`
+--
+
+INSERT INTO `billing_item` (`ID`, `Item`, `Category`, `Price`) VALUES
+(1, '1 szoba 1 főre', 1, '8700'),
+(2, '1 szoba 2 főre', 1, '11400'),
+(3, '1 szoba 3 főre', 1, '14100'),
+(4, 'Apartman', 1, '16800'),
+(5, 'Idegenforgalmi adó', 4, '300'),
+(6, 'Idegenforgalmi adó mentes', 4, '0'),
+(7, 'Reggeli', 3, '1500'),
+(8, 'Mosás', 2, '1000');
 
 -- --------------------------------------------------------
 
@@ -112,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `billing_item_category` (
 INSERT INTO `billing_item_category` (`ID`, `Name`, `VAT`, `Unit`) VALUES
 (1, 'Szállás', 18, 'éjszaka'),
 (2, 'Egyéb', 27, 'alkalom'),
-(3, 'Étkezés közvetített szolg', 18, 'alkalom'),
+(3, 'Fogyasztás (étel, ital)', 18, 'alkalom'),
 (4, 'Tárgyi adó mentes', 0, 'darab');
 
 -- --------------------------------------------------------
@@ -519,6 +534,12 @@ INSERT INTO `room_category` (`ID`, `Name`) VALUES
 --
 ALTER TABLE `accomodation_registration`
   ADD CONSTRAINT `accomodationIDOneToOne` FOREIGN KEY (`Accomodation`) REFERENCES `accomodation` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Megkötések a táblához `billing_item`
+--
+ALTER TABLE `billing_item`
+  ADD CONSTRAINT `category` FOREIGN KEY (`Category`) REFERENCES `billing_item_category` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Megkötések a táblához `guest`
