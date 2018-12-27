@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 27. 20:21
+-- Létrehozás ideje: 2018. Dec 27. 21:07
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -347,6 +347,21 @@ INSERT INTO `country` (`ID`, `CountryCode`, `CountryName`) VALUES
 (195, 'ZA', 'Dél-afrikai Köztársaság'),
 (196, 'ZM', 'Zambia'),
 (197, 'ZW', 'Zimbabwe');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `desktop_log`
+--
+
+DROP TABLE IF EXISTS `desktop_log`;
+CREATE TABLE IF NOT EXISTS `desktop_log` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `MachineName` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `LoginDate` datetime NOT NULL,
+  `LogoutDate` datetime NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
@@ -3973,21 +3988,6 @@ INSERT INTO `hungarian_zip_code_and_city` (`ID`, `ZipCode`, `City`) VALUES
 (3572, 3897, 'Zsujta'),
 (3573, 4627, 'Zsurk'),
 (3574, 3723, 'Zubogy');
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `log`
---
-
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE IF NOT EXISTS `log` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `MachineName` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
-  `LoginDate` datetime NOT NULL,
-  `LogoutDate` datetime NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
