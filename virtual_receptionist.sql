@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2018. Dec 27. 02:40
+-- Létrehozás ideje: 2018. Dec 27. 18:50
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -139,17 +139,216 @@ INSERT INTO `billing_item_category` (`ID`, `Name`, `VAT`, `Unit`) VALUES
 DROP TABLE IF EXISTS `country`;
 CREATE TABLE IF NOT EXISTS `country` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
-  `Code` varchar(2) COLLATE utf8_hungarian_ci NOT NULL,
+  `CountryCode` varchar(2) COLLATE utf8_hungarian_ci NOT NULL,
+  `CountryName` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `Code` (`Name`)
-) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  UNIQUE KEY `Code` (`CountryName`)
+) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `country`
 --
 
-/* INSERT INTO `country` (`ID`, `Name`, `Code`) VALUES */
+INSERT INTO `country` (`ID`, `CountryCode`, `CountryName`) VALUES
+(1, 'AD', 'Andorra'),
+(2, 'AE', 'Egyesült Arab Emírségek'),
+(3, 'AF', 'Afganisztán'),
+(4, 'AG', 'Antigua és Barbuda'),
+(5, 'AL', 'Albánia'),
+(6, 'AM', 'Örményország'),
+(7, 'AO', 'Angola'),
+(8, 'AR', 'Argentína'),
+(9, 'AT', 'Ausztria'),
+(10, 'AU', 'Ausztrália'),
+(11, 'AW', 'Aruba'),
+(12, 'AZ', 'Azerbajdzsán'),
+(13, 'BA', 'Bosznia-Hercegovina'),
+(14, 'BB', 'Barbados'),
+(15, 'BD', 'Banglades'),
+(16, 'BE', 'Belgium'),
+(17, 'BF', 'Burkina Faso'),
+(18, 'BG', 'Bulgária'),
+(19, 'BH', 'Bahrein'),
+(20, 'BI', 'Burundi'),
+(21, 'BJ', 'Benin'),
+(22, 'BN', 'Brunei'),
+(23, 'BO', 'Bolívia'),
+(24, 'BR', 'Brazília'),
+(25, 'BS', 'Bahama-szigetek'),
+(26, 'BT', 'Bhután'),
+(27, 'BW', 'Botswana'),
+(28, 'BY', 'Belarusz'),
+(29, 'BZ', 'Belize'),
+(30, 'CA', 'Kanada'),
+(31, 'CD', 'Kongói Dem. Köztársaság'),
+(32, 'CF', 'Közép-afrikai Köztársaság'),
+(33, 'CG', 'Kongói Köztársaság'),
+(34, 'CH', 'Svájc'),
+(35, 'CI', 'Elefántcsontpart'),
+(36, 'CL', 'Chile'),
+(37, 'CM', 'Kamerun'),
+(38, 'CN', 'Kínai Népköztársaság'),
+(39, 'CO', 'Kolumbia'),
+(40, 'CR', 'Costa Rica'),
+(41, 'CU', 'Kuba'),
+(42, 'CV', 'Zöld-foki Köztársaság'),
+(43, 'CY', 'Ciprus'),
+(44, 'CZ', 'Cseh Köztársaság'),
+(45, 'DE', 'Németország'),
+(46, 'DJ', 'Dzsibuti'),
+(47, 'DK', 'Dánia'),
+(48, 'DM', 'Dominikai Közösség'),
+(49, 'DO', 'Dominikai Köztársaság'),
+(50, 'DZ', 'Algéria'),
+(51, 'EC', 'Ecuador'),
+(52, 'EE', 'Észtország'),
+(53, 'EG', 'Egyiptom'),
+(54, 'EH', 'Nyugat-Szahara (vitatott státuszú állam)'),
+(55, 'ER', 'Eritrea'),
+(56, 'ES', 'Spanyolország'),
+(57, 'ET', 'Etiópia'),
+(58, 'FI', 'Finnország'),
+(59, 'FJ', 'Fidzsi-szigetek'),
+(60, 'FM', 'Mikronéziai Szövetségi Államok'),
+(61, 'FR', 'Franciaország'),
+(62, 'GA', 'Gabon'),
+(63, 'GB', 'Nagy-Britannia'),
+(64, 'GD', 'Grenada'),
+(65, 'GE', 'Grúzia'),
+(66, 'GH', 'Ghána'),
+(67, 'GM', 'Gambia'),
+(68, 'GN', 'Guinea'),
+(69, 'GQ', 'Egyenlítoi Guinea'),
+(70, 'GR', 'Görögország'),
+(71, 'GT', 'Guatemala'),
+(72, 'GW', 'Bissau-Guinea'),
+(73, 'GY', 'Guyana'),
+(74, 'HN', 'Honduras'),
+(75, 'HR', 'Horvátország'),
+(76, 'HT', 'Haiti'),
+(77, 'HU', 'Magyarország'),
+(78, 'ID', 'Indonézia'),
+(79, 'IE', 'Írország'),
+(80, 'IL', 'Izrael'),
+(81, 'IN', 'India'),
+(82, 'IQ', 'Irak'),
+(83, 'IR', 'Irán'),
+(84, 'IS', 'Izland'),
+(85, 'IT', 'Olaszország'),
+(86, 'JM', 'Jamaika'),
+(87, 'JO', 'Jordánia'),
+(88, 'JP', 'Japán'),
+(89, 'KE', 'Kenya'),
+(90, 'KG', 'Kirgizisztán'),
+(91, 'KH', 'Kambodzsa'),
+(92, 'KI', 'Kiribati'),
+(93, 'KM', 'Comore-szigetek'),
+(94, 'KN', 'Saint Kitts és Nevis'),
+(95, 'KP', 'Koreai Népi Demokratikus Köztársaság'),
+(96, 'KR', 'Koreai Köztársaság (Dél-Korea)'),
+(97, 'KW', 'Kuwait'),
+(98, 'KZ', 'Kazahsztán'),
+(99, 'LA', 'Laosz'),
+(100, 'LB', 'Libanon'),
+(101, 'LC', 'Saint Lucia'),
+(102, 'LI', 'Liechtenstein'),
+(103, 'LK', 'Srí Lanka'),
+(104, 'LR', 'Libéria'),
+(105, 'LS', 'Lesotho'),
+(106, 'LT', 'Litvánia'),
+(107, 'LU', 'Luxemburg'),
+(108, 'LV', 'Lettország'),
+(109, 'LY', 'Líbia'),
+(110, 'MA', 'Marokkó'),
+(111, 'MC', 'Monaco'),
+(112, 'MD', 'Moldova'),
+(113, 'ME', 'Montenegró'),
+(114, 'MG', 'Madagaszkár'),
+(115, 'MH', 'Marshall-szigetek'),
+(116, 'MK', 'Macedónia'),
+(117, 'ML', 'Mali'),
+(118, 'MM', 'Mianmar'),
+(119, 'MN', 'Mongólia'),
+(120, 'MR', 'Mauritánia'),
+(121, 'MT', 'Málta'),
+(122, 'MU', 'Mauritius'),
+(123, 'MV', 'Maldív-szigetek'),
+(124, 'MW', 'Malawi'),
+(125, 'MX', 'Mexikó'),
+(126, 'MY', 'Malajzia'),
+(127, 'MZ', 'Mozambik'),
+(128, 'NA', 'Namíbia'),
+(129, 'NE', 'Niger'),
+(130, 'NG', 'Nigéria'),
+(131, 'NI', 'Nicaragua'),
+(132, 'NL', 'Hollandia'),
+(133, 'NO', 'Norvégia'),
+(134, 'NP', 'Nepál'),
+(135, 'NR', 'Nauru'),
+(136, 'NZ', 'Új-Zéland'),
+(137, 'OM', 'Omán'),
+(138, 'PA', 'Panama'),
+(139, 'PE', 'Peru'),
+(140, 'PG', 'Pápua Új-Guinea'),
+(141, 'PH', 'Fülöp-szigetek'),
+(142, 'PK', 'Pakisztán'),
+(143, 'PL', 'Lengyelország'),
+(144, 'PS', 'Palesztina (vitatott státuszú állam)'),
+(145, 'PT', 'Portugália'),
+(146, 'PW', 'Palau'),
+(147, 'PY', 'Paraguay'),
+(148, 'QA', 'Katar'),
+(149, 'RO', 'Románia'),
+(150, 'RS', 'Szerbia'),
+(151, 'RU', 'Oroszország'),
+(152, 'RW', 'Ruanda'),
+(153, 'SA', 'Szaúd-Arábia'),
+(154, 'SB', 'Salamon-szigetek'),
+(155, 'SC', 'Seychelle-szigetek'),
+(156, 'SD', 'Szudán'),
+(157, 'SE', 'Svédország'),
+(158, 'SG', 'Szingapúr'),
+(159, 'SI', 'Szlovénia'),
+(160, 'SK', 'Szlovákia'),
+(161, 'SL', 'Sierra Leone'),
+(162, 'SM', 'San Marino'),
+(163, 'SN', 'Szenegál'),
+(164, 'SO', 'Szomália'),
+(165, 'SR', 'Suriname'),
+(166, 'SS', 'Dél-Szudán'),
+(167, 'ST', 'São Tomé és Príncipe'),
+(168, 'SV', 'El Salvador'),
+(169, 'SY', 'Szíria'),
+(170, 'SZ', 'Szváziföld'),
+(171, 'TD', 'Csád'),
+(172, 'TG', 'Togó'),
+(173, 'TH', 'Thaiföld'),
+(174, 'TJ', 'Tadzsikisztán'),
+(175, 'TL', 'Kelet-Timor'),
+(176, 'TM', 'Türkmenisztán'),
+(177, 'TN', 'Tunézia'),
+(178, 'TO', 'Tonga'),
+(179, 'TR', 'Törökország'),
+(180, 'TT', 'Trinidad és Tobago'),
+(181, 'TV', 'Tuvalu'),
+(182, 'TW', 'Tajvan (vitatott státuszú állam)'),
+(183, 'TZ', 'Tanzánia'),
+(184, 'UA', 'Ukrajna'),
+(185, 'UG', 'Uganda'),
+(186, 'US', 'Amerikai Egyesült Államok'),
+(187, 'UY', 'Uruguay'),
+(188, 'UZ', 'Üzbegisztán'),
+(189, 'VA', 'Vatikán'),
+(190, 'VC', 'Saint Vincent és a Grenadine-szigetek'),
+(191, 'VE', 'Venezuela'),
+(192, 'VN', 'Vietnam'),
+(193, 'VU', 'Vanuatu'),
+(194, 'WS', 'Szamoa'),
+(195, 'XK', 'Koszovó (vitatott státuszú állam)'),
+(196, 'YE', 'Jemen'),
+(197, 'ZA', 'Dél-afrikai Köztársaság'),
+(198, 'ZM', 'Zambia'),
+(199, 'ZW', 'Zimbabwe');
 
 -- --------------------------------------------------------
 
@@ -180,8 +379,8 @@ CREATE TABLE IF NOT EXISTS `guest` (
 --
 
 INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, `Address`, `VATNumber`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Dr. Friedrich Otto Beckewitz', 1, 57, '', 'München', 'Muttenthalerstraße 12.', '', '', ''),
-(2, 'Binary Software Kft.', 0, 100, '6900', 'Makó', 'Kálvária u. 48/A', '13406413244', '06 (20) 294 42 80', 'juhasz.bence@outlook.hu');
+(1, 'Dr. Friedrich Otto Beckewitz', 1, 45, '', 'München', 'Muttenthalerstraße 12.', '', '', ''),
+(2, 'Binary Software Kft.', 0, 77, '6900', 'Makó', 'Kálvária u. 48/A', '13406413244', '06 (20) 294 42 80', 'juhasz.bence@outlook.hu');
 
 -- --------------------------------------------------------
 
@@ -2290,7 +2489,7 @@ INSERT INTO `hungarian_zip_code_and_city` (`ID`, `ZipCode`, `City`) VALUES
 (2086, 8484, 'Nagyalásony'),
 (2087, 4922, 'Nagyar'),
 (2088, 7500, 'Nagyatád'),
-(2089, 9063, 'Nagybajcs'),
+(2089, 9063, 'Nagybajcs');
 (2090, 7561, 'Nagybajom'),
 (2091, 8821, 'Nagybakónak'),
 (2092, 5668, 'Nagybánhegyes'),
@@ -3776,6 +3975,21 @@ INSERT INTO `hungarian_zip_code_and_city` (`ID`, `ZipCode`, `City`) VALUES
 (3572, 3897, 'Zsujta'),
 (3573, 4627, 'Zsurk'),
 (3574, 3723, 'Zubogy');
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `log`
+--
+
+DROP TABLE IF EXISTS `log`;
+CREATE TABLE IF NOT EXISTS `log` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `MachineName` varchar(30) COLLATE utf8_hungarian_ci NOT NULL,
+  `LoginDate` datetime NOT NULL,
+  `LogoutDate` datetime NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 -- --------------------------------------------------------
 
