@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Jan 15. 17:11
+-- Létrehozás ideje: 2019. Jan 15. 22:54
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -4065,7 +4065,7 @@ INSERT INTO `room` (`ID`, `Name`, `Number`, `Category`, `Capacity`) VALUES
 DROP TABLE IF EXISTS `room_category`;
 CREATE TABLE IF NOT EXISTS `room_category` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
+  `CategoryName` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -4073,7 +4073,7 @@ CREATE TABLE IF NOT EXISTS `room_category` (
 -- A tábla adatainak kiíratása `room_category`
 --
 
-INSERT INTO `room_category` (`ID`, `Name`) VALUES
+INSERT INTO `room_category` (`ID`, `CategoryName`) VALUES
 (1, 'Földszinti háromágyas'),
 (2, 'Földszinti családi négyágyas'),
 (3, 'Földszinti franciaágyas'),
