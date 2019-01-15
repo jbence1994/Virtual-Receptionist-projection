@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2019. Jan 05. 01:08
+-- Létrehozás ideje: 2019. Jan 15. 17:11
 -- Kiszolgáló verziója: 10.1.32-MariaDB
 -- PHP verzió: 7.2.5
 
@@ -84,7 +84,7 @@ INSERT INTO `accomodation_registration` (`Accomodation`, `AccomodationID`, `Pass
 DROP TABLE IF EXISTS `billing_item`;
 CREATE TABLE IF NOT EXISTS `billing_item` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Item` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
+  `BillingItemName` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `Category` int(11) NOT NULL,
   `Price` varchar(10) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`),
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `billing_item` (
 -- A tábla adatainak kiíratása `billing_item`
 --
 
-INSERT INTO `billing_item` (`ID`, `Item`, `Category`, `Price`) VALUES
+INSERT INTO `billing_item` (`ID`, `BillingItemName`, `Category`, `Price`) VALUES
 (1, '1 szoba 1 főre', 1, '8700'),
 (2, '1 szoba 2 főre', 1, '11400'),
 (3, '1 szoba 3 főre', 1, '14100'),
@@ -114,7 +114,7 @@ INSERT INTO `billing_item` (`ID`, `Item`, `Category`, `Price`) VALUES
 DROP TABLE IF EXISTS `billing_item_category`;
 CREATE TABLE IF NOT EXISTS `billing_item_category` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
+  `BillingItemCategoryName` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
   `VAT` float NOT NULL,
   `Unit` varchar(25) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`ID`)
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `billing_item_category` (
 -- A tábla adatainak kiíratása `billing_item_category`
 --
 
-INSERT INTO `billing_item_category` (`ID`, `Name`, `VAT`, `Unit`) VALUES
+INSERT INTO `billing_item_category` (`ID`, `BillingItemCategoryName`, `VAT`, `Unit`) VALUES
 (1, 'Szállás', 18, 'éjszaka'),
 (2, 'Fogyasztás (étel, ital)', 18, 'alkalom'),
 (3, 'Tárgyi adó mentes', 0, 'darab'),
@@ -392,8 +392,8 @@ CREATE TABLE IF NOT EXISTS `guest` (
 --
 
 INSERT INTO `guest` (`ID`, `Name`, `Nationality`, `Country`, `ZipCode`, `City`, `Address`, `VATNumber`, `PhoneNumber`, `EmailAddress`) VALUES
-(1, 'Dr. Friedrich Otto Beckewitz', 1, 45, '', 'München', 'Muttenthalerstraße 12.', '', '', ''),
-(2, 'Binary Software Kft.', 0, 77, '6900', 'Makó', 'Kálvária u. 48/A', '13406413244', '06 (20) 294 42 80', 'juhasz.bence@outlook.hu');
+(1, 'Dr. Friedrich Otto Beckewitz', 0, 45, '', 'München', 'Muttenthalerstraße 12.', '', '', ''),
+(2, 'Binary Software Kft.', 1, 76, '6900', 'Makó', 'Kálvária u. 48/A', '13406413244', '06 (20) 294 42 80', 'juhasz.bence@outlook.hu');
 
 -- --------------------------------------------------------
 
