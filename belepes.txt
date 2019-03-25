@@ -1,0 +1,10 @@
+#Írja bele a fájlba, hogy a kölönbözõ alkalmazásokba
+#hogyan kell belépni!
+
+#Desktop
+felhasználó név:
+jelszó:
+
+#Web
+felhasználó név:
+jelszó:
