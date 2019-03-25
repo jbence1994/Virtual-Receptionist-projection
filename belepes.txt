@@ -2,9 +2,9 @@
 #hogyan kell belépni!
 
 #Desktop
-felhasználó név:
-jelszó:
+felhasználó név: ARANYERDO
+jelszó: admin
 
 #Web
-felhasználó név:
-jelszó:
+felhasználó név: ARANYERDO
+jelszó: admin
