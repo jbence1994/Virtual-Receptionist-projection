@@ -15,16 +15,16 @@
     </DbDiagramOptions>
     <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PageOptions">
       <TopLeftMargins>
-        <Width>10 mm</Width>
-        <Height>10 mm</Height>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
       </TopLeftMargins>
       <BottomRightMargins>
-        <Width>10 mm</Width>
-        <Height>10 mm</Height>
+        <Width>39.3700787401575 in/100</Width>
+        <Height>39.3700787401575 in/100</Height>
       </BottomRightMargins>
       <PaperSize>
-        <Width>210 mm</Width>
-        <Height>297 mm</Height>
+        <Width>827 in/100</Width>
+        <Height>1169 in/100</Height>
       </PaperSize>
     </Options>
     <Options xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="PrintOptions" />
@@ -52,8 +52,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>1240 px</X>
-              <Y>-370 px</Y>
+              <X>920 px</X>
+              <Y>-90 px</Y>
             </Location>
             <Size>
               <Width>231 px</Width>
@@ -75,8 +75,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>820 px</X>
-              <Y>-230 px</Y>
+              <X>490 px</X>
+              <Y>-70 px</Y>
             </Location>
             <Size>
               <Width>210 px</Width>
@@ -105,8 +105,8 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>210.8 px</X>
-                  <Y>63.2 px</Y>
+                  <X>0 px</X>
+                  <Y>102.75 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -117,8 +117,8 @@
               </Port>
               <Port>
                 <Location>
-                  <X>-0.299999999999955 px</X>
-                  <Y>114.2 px</Y>
+                  <X>0 px</X>
+                  <Y>72.75 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -130,12 +130,12 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>1050 px</X>
-                <Y>-166.8 px</Y>
+                <X>750 px</X>
+                <Y>32.75 px</Y>
               </PointD>
               <PointD>
-                <X>1050 px</X>
-                <Y>-255.8 px</Y>
+                <X>750 px</X>
+                <Y>-17.25 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -154,8 +154,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-115 px</X>
-                  <Y>89.0000030517578 px</Y>
+                  <X>-135 px</X>
+                  <Y>50 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -177,8 +177,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>900 px</X>
-              <Y>330 px</Y>
+              <X>1160 px</X>
+              <Y>530 px</Y>
             </Location>
             <Size>
               <Width>210 px</Width>
@@ -200,8 +200,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>1240 px</X>
-              <Y>500 px</Y>
+              <X>670 px</X>
+              <Y>540 px</Y>
             </Location>
             <Size>
               <Width>264 px</Width>
@@ -231,10 +231,10 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>108 px</Y>
+                  <Y>73.5 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>12</OID>
                   <PortType>FloatAnchor</PortType>
@@ -242,26 +242,20 @@
               </Port>
               <Port>
                 <Location>
-                  <X>132 px</X>
-                  <Y>0 px</Y>
+                  <X>0 px</X>
+                  <Y>63.5 px</Y>
                 </Location>
-                <Anchors>Left Right</Anchors>
-                <Align>Top</Align>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>13</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
-            <BendPoints>
-              <PointD>
-                <X>1372 px</X>
-                <Y>438 px</Y>
-              </PointD>
-            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
-              <Path>virtual_receptionist.billing_item.category</Path>
+              <Path>virtual_receptionist.billing_item.billing_item_categoryid</Path>
               <TypeName>ForeignKey</TypeName>
             </DbOid>
           </Model>
@@ -275,11 +269,11 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-131 px</X>
+                  <X>113 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Right</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>14</OID>
                   <PortType>FixedAnchor</PortType>
@@ -298,8 +292,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>950 px</X>
-              <Y>20 px</Y>
+              <X>760 px</X>
+              <Y>210 px</Y>
             </Location>
             <Size>
               <Width>207 px</Width>
@@ -321,8 +315,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>360 px</X>
-              <Y>-200 px</Y>
+              <X>100 px</X>
+              <Y>20 px</Y>
             </Location>
             <Size>
               <Width>193 px</Width>
@@ -344,8 +338,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>560 px</X>
-              <Y>-10 px</Y>
+              <X>390 px</X>
+              <Y>220 px</Y>
             </Location>
             <Size>
               <Width>221 px</Width>
@@ -374,11 +368,11 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>110.5 px</X>
-                  <Y>0 px</Y>
+                  <X>0.0999999999999091 px</X>
+                  <Y>131.2 px</Y>
                 </Location>
-                <Anchors>Left Right</Anchors>
-                <Align>Top</Align>
+                <Anchors>Top Bottom</Anchors>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>20</OID>
                   <PortType>FloatAnchor</PortType>
@@ -386,8 +380,8 @@
               </Port>
               <Port>
                 <Location>
-                  <X>0 px</X>
-                  <Y>93 px</Y>
+                  <X>192.2 px</X>
+                  <Y>62.2 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -399,8 +393,12 @@
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>670.5 px</X>
-                <Y>-107 px</Y>
+                <X>370 px</X>
+                <Y>351.2 px</Y>
+              </PointD>
+              <PointD>
+                <X>370 px</X>
+                <Y>82.2 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -419,11 +417,11 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>58.75 px</X>
-                  <Y>97 px</Y>
+                  <X>20 px</X>
+                  <Y>134.500003051758 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
-                <Align>Top</Align>
+                <Align>Left</Align>
                 <CustomProperties>
                   <OID>22</OID>
                   <PortType>FixedAnchor</PortType>
@@ -450,7 +448,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>146.25 px</Y>
+                  <Y>187.5 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -462,7 +460,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>176.25 px</Y>
+                  <Y>7.5 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -472,6 +470,16 @@
                 </CustomProperties>
               </Port>
             </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>740 px</X>
+                <Y>397.5 px</Y>
+              </PointD>
+              <PointD>
+                <X>740 px</X>
+                <Y>227.5 px</Y>
+              </PointD>
+            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>virtual_receptionist.booking.guestid</Path>
@@ -488,8 +496,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>84.5 px</X>
-                  <Y>0 px</Y>
+                  <X>20 px</X>
+                  <Y>85 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -511,8 +519,8 @@
               <Parent>0</Parent>
             </CustomProperties>
             <Location>
-              <X>1340 px</X>
-              <Y>20 px</Y>
+              <X>1230 px</X>
+              <Y>200 px</Y>
             </Location>
             <Size>
               <Width>165 px</Width>
@@ -541,7 +549,7 @@
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>82.5 px</X>
+                  <X>105 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
@@ -553,23 +561,17 @@
               </Port>
               <Port>
                 <Location>
-                  <X>0 px</X>
-                  <Y>36 px</Y>
+                  <X>175 px</X>
+                  <Y>0 px</Y>
                 </Location>
-                <Anchors>Top Bottom</Anchors>
-                <Align>Right</Align>
+                <Anchors>Left Right</Anchors>
+                <Align>Top</Align>
                 <CustomProperties>
                   <OID>32</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
-            <BendPoints>
-              <PointD>
-                <X>1422.5 px</X>
-                <Y>366 px</Y>
-              </PointD>
-            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>virtual_receptionist.room.categoryid</Path>
@@ -586,8 +588,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>156.25 px</X>
-                  <Y>-185 px</Y>
+                  <X>0 px</X>
+                  <Y>-84.5 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Bottom</Align>
@@ -617,7 +619,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>120.75 px</Y>
+                  <Y>20.5 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -629,16 +631,26 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>120.75 px</Y>
+                  <Y>140.5 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
-                <Align>Left</Align>
+                <Align>Right</Align>
                 <CustomProperties>
                   <OID>37</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>1414 px</X>
+                <Y>230.5 px</Y>
+              </PointD>
+              <PointD>
+                <X>1414 px</X>
+                <Y>340.5 px</Y>
+              </PointD>
+            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>virtual_receptionist.booking.roomid</Path>
@@ -655,7 +667,7 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>-91.5 px</X>
+                  <X>-223.5 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
@@ -675,10 +687,10 @@
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
-          <Scale>0.53</Scale>
+          <Scale>0.56034</Scale>
           <Location>
-            <X>298.113223639788 px</X>
-            <Y>-560.377388288391 px</Y>
+            <X>14.277031062968 px</X>
+            <Y>-499.696598492634 px</Y>
           </Location>
         </ViewPort>
       </Model>
