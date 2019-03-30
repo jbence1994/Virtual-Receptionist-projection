@@ -57,15 +57,15 @@
             </Location>
             <Size>
               <Width>231 px</Width>
-              <Height>229 px</Height>
+              <Height>267 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.accomodation</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -80,15 +80,15 @@
             </Location>
             <Size>
               <Width>210 px</Width>
-              <Height>127 px</Height>
+              <Height>182 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.accomodation_profile</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -106,7 +106,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>102.75 px</Y>
+                  <Y>147.248031496063 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -118,7 +118,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>72.75 px</Y>
+                  <Y>84.8220524017467 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -131,11 +131,11 @@
             <BendPoints>
               <PointD>
                 <X>750 px</X>
-                <Y>32.75 px</Y>
+                <Y>77.248031496063 px</Y>
               </PointD>
               <PointD>
                 <X>750 px</X>
-                <Y>-17.25 px</Y>
+                <Y>-5.17794759825328 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -155,7 +155,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>-135 px</X>
-                  <Y>50 px</Y>
+                  <Y>82.4259790172727 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -182,15 +182,15 @@
             </Location>
             <Size>
               <Width>210 px</Width>
-              <Height>144 px</Height>
+              <Height>216 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.billing_item</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -205,14 +205,14 @@
             </Location>
             <Size>
               <Width>264 px</Width>
-              <Height>127 px</Height>
+              <Height>146 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.billing_item_category</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
               <IndexesCollapsed>True</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
@@ -231,7 +231,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>73.5 px</Y>
+                  <Y>110.25 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -243,7 +243,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>63.5 px</Y>
+                  <Y>73 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -253,6 +253,16 @@
                 </CustomProperties>
               </Port>
             </PortAnchors>
+            <BendPoints>
+              <PointD>
+                <X>1140 px</X>
+                <Y>640.25 px</Y>
+              </PointD>
+              <PointD>
+                <X>1140 px</X>
+                <Y>613 px</Y>
+              </PointD>
+            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <DbOid>
               <Path>virtual_receptionist.billing_item.billing_item_categoryid</Path>
@@ -269,8 +279,8 @@
             <PortAnchors>
               <Port xsi:type="LinkPort">
                 <Location>
-                  <X>113 px</X>
-                  <Y>0 px</Y>
+                  <X>123 px</X>
+                  <Y>27.25 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -297,15 +307,15 @@
             </Location>
             <Size>
               <Width>207 px</Width>
-              <Height>195 px</Height>
+              <Height>284 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.booking</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -320,15 +330,15 @@
             </Location>
             <Size>
               <Width>193 px</Width>
-              <Height>124 px</Height>
+              <Height>162 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.country</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -343,15 +353,15 @@
             </Location>
             <Size>
               <Width>221 px</Width>
-              <Height>263 px</Height>
+              <Height>352 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.guest</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -369,7 +379,7 @@
               <Port>
                 <Location>
                   <X>0.0999999999999091 px</X>
-                  <Y>131.2 px</Y>
+                  <Y>175.598479087452 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -381,7 +391,7 @@
               <Port>
                 <Location>
                   <X>192.2 px</X>
-                  <Y>62.2 px</Y>
+                  <Y>81.2612903225806 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -394,11 +404,11 @@
             <BendPoints>
               <PointD>
                 <X>370 px</X>
-                <Y>351.2 px</Y>
+                <Y>395.598479087452 px</Y>
               </PointD>
               <PointD>
                 <X>370 px</X>
-                <Y>82.2 px</Y>
+                <Y>101.261290322581 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -418,7 +428,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>20 px</X>
-                  <Y>134.500003051758 px</Y>
+                  <Y>147.168593223195 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -448,7 +458,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>187.5 px</Y>
+                  <Y>273.076923076923 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
@@ -460,7 +470,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>7.5 px</Y>
+                  <Y>10.0380228136882 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -473,11 +483,11 @@
             <BendPoints>
               <PointD>
                 <X>740 px</X>
-                <Y>397.5 px</Y>
+                <Y>483.076923076923 px</Y>
               </PointD>
               <PointD>
                 <X>740 px</X>
-                <Y>227.5 px</Y>
+                <Y>230.038022813688 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -497,7 +507,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>20 px</X>
-                  <Y>85 px</Y>
+                  <Y>126.519427959736 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Left</Align>
@@ -524,15 +534,15 @@
             </Location>
             <Size>
               <Width>165 px</Width>
-              <Height>161 px</Height>
+              <Height>233 px</Height>
             </Size>
             <DbOid>
               <Path>virtual_receptionist.room</Path>
               <TypeName>Table</TypeName>
             </DbOid>
             <Compartments>
-              <ConstraintsCollapsed>True</ConstraintsCollapsed>
-              <IndexesCollapsed>True</IndexesCollapsed>
+              <ConstraintsCollapsed>False</ConstraintsCollapsed>
+              <IndexesCollapsed>False</IndexesCollapsed>
               <TriggersCollapsed>True</TriggersCollapsed>
             </Compartments>
           </Model>
@@ -589,7 +599,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>0 px</X>
-                  <Y>-84.5 px</Y>
+                  <Y>-48.5 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Bottom</Align>
@@ -619,7 +629,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>20.5 px</Y>
+                  <Y>29.8564102564103 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -631,7 +641,7 @@
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>140.5 px</Y>
+                  <Y>203.332298136646 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
@@ -644,11 +654,11 @@
             <BendPoints>
               <PointD>
                 <X>1414 px</X>
-                <Y>230.5 px</Y>
+                <Y>239.85641025641 px</Y>
               </PointD>
               <PointD>
                 <X>1414 px</X>
-                <Y>340.5 px</Y>
+                <Y>403.332298136646 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
@@ -668,7 +678,7 @@
               <Port xsi:type="LinkPort">
                 <Location>
                   <X>-223.5 px</X>
-                  <Y>0 px</Y>
+                  <Y>-4.53851163229047E-06 px</Y>
                 </Location>
                 <Anchors>None</Anchors>
                 <Align>Right</Align>
@@ -687,10 +697,10 @@
         </Children>
         <ViewPort>
           <ScaleMode>Free</ScaleMode>
-          <Scale>0.56034</Scale>
+          <Scale>0.8987505</Scale>
           <Location>
-            <X>14.277031062968 px</X>
-            <Y>-499.696598492634 px</Y>
+            <X>83.4491901100976 px</X>
+            <Y>-125.73011341705 px</Y>
           </Location>
         </ViewPort>
       </Model>
