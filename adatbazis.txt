@@ -1,5 +1,5 @@
 10.0.128.111
-DATABASE: zarodolgozat_2018juhben
+DATABASE: zarodolgozat_2018szjuhben
 USER: zarodolgozat
 PASSWORD: zarodolgozat
 PORT: 3306
